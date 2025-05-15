@@ -448,7 +448,7 @@ export default function Home() {
                     <FaGithub size={23} />
                   </motion.a>
                   <motion.a
-                    href="https://www.linkedin.com/in/prasath-s-0ba533247"
+                    href="https://www.linkedin.com/in/prasaths27/"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, rotate: 10 }}
@@ -469,7 +469,7 @@ export default function Home() {
 
                 {/* Resume Button with animated arrow */}
                 <motion.a
-                  href="/PRASATH S.pdf"
+                  href="/PRASATH SUBRAMANIAN.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.08, background: "linear-gradient(to right, #a78bfa, #3b82f6)" }}
@@ -978,7 +978,7 @@ export default function Home() {
       <FaGithub />
     </motion.a>
     <motion.a
-      href="https://www.linkedin.com/in/prasath-s-0ba533247"
+      href="https://www.linkedin.com/in/prasaths27/"
       target="_blank"
       rel="noopener noreferrer"
       className="hover:text-blue-400 text-gray-400 transition-colors duration-200 text-xl md:text-2xl"
