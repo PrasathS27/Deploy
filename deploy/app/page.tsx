@@ -23,6 +23,7 @@ import * as THREE from 'three';
 
 import Link from "next/link";
 import { FaReact, FaNodeJs, FaDatabase, FaCloud, FaTools, FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaArrowRight, FaSun, FaMoon, FaBars, FaWhatsapp } from "react-icons/fa";
+import emailjs from "emailjs-com";
 import { 
   SiNextdotjs, SiRedux, SiTypescript, SiTailwindcss, SiExpress, SiNestjs, SiSpringboot, 
   SiGithubactions, SiFigma, SiPostman, 
@@ -47,17 +48,49 @@ import { FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
     const form = e.currentTarget;
     const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim();
+    const message = (form.elements.namedItem("message") as HTMLInputElement)?.value.trim();
+
     if (!name || !email) {
       form.reportValidity();
+      setLoading(false);
       return;
     }
-    setSubmitted(true);
+
+    // EmailJS integration
+    try {
+      await emailjs.send(
+        "service_3lhoqy7",      
+        "template_kqidkv8",     
+        {
+          name,
+          email,
+          message,
+          title: "PRASATH SUBRAMANIAN", 
+        },
+        "NeDacPd7XV2B6w3up"       
+      );
+      setSubmitted(true);
+    } catch (err) {
+      setError("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Reset form to allow another message
+  const handleReset = () => {
+    setSubmitted(false);
+    setError(null);
   };
 
   if (submitted) {
@@ -71,6 +104,12 @@ function ContactForm() {
         `}>
           Thanks for Connection..!
         </h3>
+        <button
+          onClick={handleReset}
+          className="mt-6 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 active:scale-95"
+        >
+          Send Another Message
+        </button>
       </div>
     );
   }
@@ -103,11 +142,13 @@ function ContactForm() {
           className="w-full px-4 py-3 rounded-lg bg-white/10 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none"
         ></textarea>
       </div>
+      {error && <div className="text-red-500">{error}</div>}
       <button
         type="submit"
         className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:from-purple-600 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 active:scale-95"
+        disabled={loading}
       >
-        Send Message
+        {loading ? "Sending..." : "Send Message"}
       </button>
     </form>
   );
@@ -140,6 +181,35 @@ export default function Home() {
   // Mobile menu and theme toggle state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+
+  // Floating corner button state
+  const [cornerMsg, setCornerMsg] = useState<string | null>(null);
+  const [cornerLoading, setCornerLoading] = useState(false);
+
+  // Function to send a different message via EmailJS
+  const handleCornerButtonClick = async () => {
+    setCornerLoading(true);
+    setCornerMsg(null);
+    try {
+      await emailjs.send(
+        "service_3lhoqy7",
+        "template_kqidkv8",
+        {
+          name: "Portfolio Visitor",
+          email: "noreply@prasath.com",
+          message: "This is a quick hello from the corner button!",
+          title: "Quick Hello",
+        },
+        "NeDacPd7XV2B6w3up"
+      );
+      setCornerMsg("Message sent..🚀");
+    } catch (err) {
+      setCornerMsg("Failed to send quick message.");
+    } finally {
+      setCornerLoading(false);
+    }
+  };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -226,6 +296,24 @@ export default function Home() {
         }}
         className={`fixed top-0 left-0 h-1 z-50 ${darkMode ? "bg-gradient-to-r from-blue-900 to-purple-900" : "bg-gradient-to-r from-blue-400 to-purple-500"}`}
       />
+
+      {/* Floating Corner Button */}
+      <button
+        onClick={handleCornerButtonClick}
+        disabled={cornerLoading}
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg px-5 py-3 font-semibold hover:scale-110 transition-all duration-300"
+        style={{ minWidth: 56 }}
+        aria-label="Send quick hello"
+      >
+        {cornerLoading ? "Sending..." : "Say Hi!"}
+      </button>
+      {/* Corner Message Notification */}
+      {cornerMsg && (
+        <div className="fixed bottom-24 right-6 z-50 bg-white/90 text-blue-800 px-4 py-2 rounded shadow-lg animate-bounce">
+          {cornerMsg}
+        </div>
+      )}
+
       {/* Enhanced Header with Motion */}
       <motion.header 
         initial={{ y: -100, opacity: 0 }}
