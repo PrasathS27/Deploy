@@ -137,6 +137,7 @@ function ContactForm() {
       <div>
         <textarea
           name="message"
+          required
           placeholder="Your Message"
           rows={4}
           className="w-full px-4 py-3 rounded-lg bg-white/10 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none"
@@ -778,7 +779,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(59,130,246,0.25)" }}
-                className="bg-gradient-to-br from-blue-900/60 to-blue-600/30 rounded-2xl p-8 shadow-xl border border-blue-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-blue-900/85 to-blue-600/65 rounded-2xl p-8 shadow-xl border border-blue-500/30 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <FaReact className="text-cyan-400 text-3xl animate-spin-slow" />
@@ -802,7 +803,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(168,139,250,0.25)" }}
-                className="bg-gradient-to-br from-purple-900/60 to-purple-600/30 rounded-2xl p-8 shadow-xl border border-purple-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-purple-900/80 to-purple-600/60 rounded-2xl p-8 shadow-xl border border-purple-500/30 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <FaNodeJs className="text-green-400 text-3xl animate-bounce" />
@@ -824,7 +825,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(99,102,241,0.25)" }}
-                className="bg-gradient-to-br from-indigo-900/60 to-indigo-600/30 rounded-2xl p-8 shadow-xl border border-indigo-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-indigo-900/80 to-indigo-600/50 rounded-2xl p-8 shadow-xl border border-indigo-500/30 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <FaTools className="text-yellow-300 text-3xl animate-bounce" />
@@ -885,7 +886,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2  }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(59,130,246,0.25)" }}
-                className="bg-gradient-to-br from-blue-900/60 to-blue-600/30 rounded-2xl p-8 shadow-xl border border-blue-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-blue-900/80 to-blue-600/60 rounded-2xl p-8 shadow-xl border border-blue-500/30 transition-all duration-300"
               >
                 <h3 className="text-xl font-bold text-indigo-200 mb-2">Software Developer</h3>
                 <p className="text-gray-300">Neartekpod APAC Technologies</p>
@@ -910,7 +911,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(168,139,250,0.25)" }}
-                className="bg-gradient-to-br from-purple-900/60 to-purple-600/30 rounded-2xl p-8 shadow-xl border border-purple-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-purple-900/80 to-purple-600/60 rounded-2xl p-8 shadow-xl border border-purple-500/30 transition-all duration-300"
               >
                 <h3 className="text-xl font-bold text-purple-200 mb-2">Python & Web Development</h3>
                 <p className="text-gray-300">Accord Info Matrix</p>
@@ -935,7 +936,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(99,102,241,0.25)" }}
-                className="bg-gradient-to-br from-indigo-900/60 to-indigo-600/30 rounded-2xl p-8 shadow-xl border border-indigo-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-indigo-900/80 to-indigo-600/50 rounded-2xl p-8 shadow-xl border border-indigo-500/30 transition-all duration-300"
               >
                 <h3 className="text-xl font-bold text-blue-200 mb-2">Graphic Design</h3>
                 <p className="text-gray-300">IPINGU Managed Security Solution LLP</p>
@@ -959,7 +960,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.8 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(236,72,153,0.25)" }}
-                className="bg-gradient-to-br from-pink-900/60 to-pink-600/30 rounded-2xl p-8 shadow-xl border border-pink-500/30 transition-all duration-300"
+                className="bg-gradient-to-br from-pink-900/80 to-pink-600/50 rounded-2xl p-8 shadow-xl border border-pink-500/30 transition-all duration-300"
               >
                 <h3 className="text-xl font-bold text-pink-200 mb-2">NPTEL IOT Certification</h3>
                 <p className="text-gray-300">Grade: 72%</p>
@@ -1262,8 +1263,8 @@ function ProjectCarousel() {
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
               className="relative"
             >
-              <h3 className="text-2xl font-bold text-blue-300 mb-2">{projects[current].title}</h3>
-              <p className="text-gray-300 mb-4">{projects[current].description}</p>
+              <h3 className="text-2xl font-bold text-blue-400 mb-2">{projects[current].title}</h3>
+              <p className="text-gray-400  mb-4">{projects[current].description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {projects[current].tags.map((tag, idx) => (
                   <span
@@ -1275,7 +1276,7 @@ function ProjectCarousel() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-3">
-                <span className="bg-white/10 text-white px-4 py-2 rounded-lg font-semibold">{projects[current].role}</span>
+                <span className="bg-white/10 text-gray-400 px-4 py-2 rounded-lg font-semibold">{projects[current].role}</span>
                 <a
                   href={projects[current].demo}
                   target="_blank"

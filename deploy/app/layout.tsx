@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Prasath | Portfolio",
   icons: {
     icon: {
-      url: "/ps1.png", 
+      url: "/favicon.ico", 
       sizes: "48x48"
     },
   },
